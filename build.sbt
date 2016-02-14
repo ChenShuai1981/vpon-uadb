@@ -22,4 +22,4 @@ publishTo := {
 
 publishMavenStyle := true
 
-credentials += Credentials(Path("/") / "home" / "devadm" / ".ivy2" / ".credentials")
+credentials += Credentials(Path.userHome / "sbt_credentials")
