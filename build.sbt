@@ -7,7 +7,7 @@ version := "0.1-SNAPSHOT"
 scalaVersion := "2.11.7"
 
 resolvers ++= Seq(
-  "Vpon Test Artifactory" at "http://192.168.101.29:8081/artifactory/vpon-test"
+  "vpon maven" at "http://192.168.101.29:8081/artifactory/vpon-maven/"
 )
 
 crossPaths := false
@@ -15,16 +15,11 @@ crossPaths := false
 publishTo := {
   val artifactory = "http://192.168.101.29:8081/artifactory/vpon-"
   if (isSnapshot.value)
-    Some("Vpon snapshots" at artifactory + "test")
+    Some("Vpon snapshots" at artifactory + "snapshot")
   else
-    Some("Vpon releases" at artifactory + "test")
+    Some("Vpon releases" at artifactory + "release")
 }
 
 publishMavenStyle := true
 
-credentials += Credentials("Artifactory Realm", "192.168.101.29", "vpon-test", "vpon-test")
-//credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
-//  realm=Artifactory Realm
-//  host=192.168.101.29
-//  user=vpon-test
-//  password=vpon-test
+credentials += Credentials(Path("/") / "home" / "devadm" / ".ivy2" / ".credentials")
